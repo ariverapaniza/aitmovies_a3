@@ -1,4 +1,3 @@
-
 <?php
 include "navbar.php";
 include "db_connect.php";
@@ -23,7 +22,7 @@ echo '
 
 <style>
 body {
-    background-color: #020916; /* Fondo de toda la página */
+    background-color: #020916;
     color: aliceblue;
   }
 </style>

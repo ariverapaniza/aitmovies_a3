@@ -4,7 +4,7 @@ include 'db_connect.php';
 
 $cUsername = $_SESSION['username'] ?? '';
 
-// Need query to get user details
+// Need query to get user details 599
 $userQuery = "SELECT * FROM login WHERE username = ?";
 $userStmt = $conn->prepare($userQuery);
 $userStmt->bind_param("s", $cUsername);
@@ -14,16 +14,19 @@ $user = $userResult->fetch_assoc();
 
 if ($user) {
     echo "<div class='container mt-5'>";
-    echo "<h1 class='text-white text-center mb-4'>User Information</h1>";
+    echo "<h1 class='text-white text-center mb-4'>Edit User Information</h1>";
+    echo "<form action='update_profile.php' method='post'>";
     echo "<table class='table table-dark table-striped'>";
     echo "<tbody>";
     echo "<tr><td><strong>Username:</strong></td><td>" . htmlspecialchars($user['username']) . "</td></tr>";
-    echo "<tr><td><strong>First Name:</strong></td><td>" . htmlspecialchars($user['fname']) . "</td></tr>";
-    echo "<tr><td><strong>Last Name:</strong></td><td>" . htmlspecialchars($user['lname']) . "</td></tr>";
-    echo "<tr><td><strong>Email:</strong></td><td>" . htmlspecialchars($user['email']) . "</td></tr>";
-    echo "<tr><td><strong>Address:</strong></td><td>" . htmlspecialchars($user['address']) . "</td></tr>";
+    echo "<tr><td><strong>First Name:</strong></td><td><input type='text' name='fname' value='" . htmlspecialchars($user['fname']) . "' required></td></tr>";
+    echo "<tr><td><strong>Last Name:</strong></td><td><input type='text' name='lname' value='" . htmlspecialchars($user['lname']) . "' required></td></tr>";
+    echo "<tr><td><strong>Email:</strong></td><td><input type='email' name='email' value='" . htmlspecialchars($user['email']) . "' required></td></tr>";
+    echo "<tr><td><strong>Address:</strong></td><td><input type='text' name='address' value='" . htmlspecialchars($user['address']) . "' required></td></tr>";
+    echo "<tr><td colspan='2'><button type='submit' class='btn btn-primary'>Update Profile</button></td></tr>";
     echo "</tbody>";
     echo "</table>";
+    echo "</form>";
     echo "</div>";
 } else {
     echo "<p>User not found.</p>";
@@ -73,4 +76,11 @@ function displayWatchlistMovies($conn, $cUsername)
 displayWatchlistMovies($conn, $cUsername);
 
 $conn->close();
-?>
+echo '</div>
+
+<footer class= "  py-3 mt-3" style="background-color: #020916 ;" > 
+<div class="container text-ligth text-center">
+<img src="img/AITMoviesLogo.png" alt="Logo" width="50" height="60">            
+</div>
+</footer>
+</div>';

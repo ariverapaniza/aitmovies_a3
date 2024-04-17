@@ -1,18 +1,32 @@
 <?php
-
-include 'navbar.php';
 include 'db_connect.php';
+session_start();
 
-if (isset($_POST['add_to_watchlist'])) {
+if (isset($_POST['toggle_watchlist']) && isset($_SESSION['username'])) {
     $movieTitle = $_POST['movie_title'];
     $username = $_SESSION['username'];
 
-    $stmt = $conn->prepare("INSERT INTO watchlist (watchlist, wusername, wmovie) VALUES (1, ?, ?)");
+    // Check current watchlist state
+    $stmt = $conn->prepare("SELECT * FROM watchlist WHERE wusername = ? AND wmovie = ?");
     $stmt->bind_param("ss", $username, $movieTitle);
     $stmt->execute();
+    $isInWatchlist = $stmt->get_result()->num_rows > 0;
     $stmt->close();
 
-
-    echo 'Success';
+    if ($isInWatchlist) {
+        // Remove from watchlist
+        $stmt = $conn->prepare("DELETE FROM watchlist WHERE wusername = ? AND wmovie = ?");
+        $stmt->bind_param("ss", $username, $movieTitle);
+        $stmt->execute();
+        $stmt->close();
+        echo "Removed from watchlist!";
+    } else {
+        // Add to watchlist
+        $stmt = $conn->prepare("INSERT INTO watchlist (wusername, wmovie) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $movieTitle);
+        $stmt->execute();
+        $stmt->close();
+        echo "Added to watchlist!";
+    }
     exit;
 }
