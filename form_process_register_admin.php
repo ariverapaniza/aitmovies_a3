@@ -40,15 +40,14 @@ $sqlTemp->execute();
 
 echo '<br><br><div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6"><h3> Register Successful!</h3><br>
-            <img src="img/AITMovies_Black_mod_s.png" alt="Logo" width="469" height="144" class="d-inline-block align-text-top"><br><br>
-            </div>
-        </div>
+            <div class="col-md-6"><h3 style="color: white;">Register Successful!</h3><br>
+            <img src="img/AITMovies_mod.png" alt="Logo" width="469" height="144" class="d-inline-block align-text-top"><br><br>
+            </div>';
+echo "<H5 style='color: white;'>Username: " . $username . "</H5><br>";
+echo "<H5 style='color: white;'>Password Hashed: " . $passwordHashed . "</H5><br>";
+echo "<a href='login.php'><H5>Go To Login Page</H5></a>";
+echo '</div>
     </div>';
-echo "Username: " . $username . "<br>";
-echo "Password: " . $password . "<br>";
-echo "Password Hashed: " . $passwordHashed . "<br>";
-echo "<a href='javascript:history.go(-1)'>Back</a>";
 
 $sqlTemp->close();
 $conn->close();

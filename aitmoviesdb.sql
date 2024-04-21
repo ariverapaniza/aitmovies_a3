@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2024 at 01:57 AM
+-- Generation Time: Apr 17, 2024 at 11:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -113,7 +113,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `username`, `password`, `fname`, `lname`, `email`, `address`, `admin`) VALUES
-(1, 'testlogin', '$2y$10$w3CIVW3eEtivSOSptcaCxeCtMFV3XwlEE2k.snTwA7hoVFojRo3xe', 'Test', 'Login', 'test@login.com', '123 noel street', 1),
+(1, 'testlogin', '$2y$10$w3CIVW3eEtivSOSptcaCxeCtMFV3XwlEE2k.snTwA7hoVFojRo3xe', 'Test', 'Login', 'test@login.com.au', '123 Noel Street', 1),
 (2, 'emmarivera', '$2y$10$NCvdlT3ZwOmkQ/A8ig/CouxeTrD0a8DtDhK48aJkPYfH9CP88DZM.', 'emma', 'rivera', 'emma@rivera.com', '1234 nostreet', 0),
 (5, 'ariverapaniza1', '$2y$10$.fyOTvFjwNPvRK..cD4CZOPe/P/DxSl1MwN5AJP7t3OlREVO1CS3e', 'ariverapaniza', 'ariverapaniza', 'asiesmiemal@nomail.com', '423423 dgfkljdfg', 0),
 (6, 'ariverapaniza', '$2y$10$lioeJ.z69HUC9yUpc01Sj.9WTw1gAXRAyn9NlaPxrYfneUlZ4zhCC', 'Arturo', 'Rivera', 'ariverapaniza@gmail.com', '1 Physical Address', 1),
@@ -235,14 +235,12 @@ INSERT INTO `watchlist` (`id`, `watchlist`, `wusername`, `wmovie`) VALUES
 (2, 1, 'testlogin', 'Jumanji: Welcome to the Jungle'),
 (3, 1, 'testlogin', 'Star Wars: The Bad Batch'),
 (4, 1, 'testlogin', 'The Marvels'),
-(5, 1, 'testlogin', 'The Beekeeper'),
 (6, 1, 'testlogin', 'The Wolf of Wall Street'),
 (7, 1, 'testlogin', 'The Secret Life of Pets'),
 (8, 1, 'evelyn', 'Lift'),
 (9, 1, 'evelyn', 'Constantine'),
 (10, 1, 'evelyn', 'Migration'),
 (11, 1, 'evelyn', 'The Beekeeper'),
-(12, 1, 'testlogin', 'The Beekeeper'),
 (13, 1, 'testlogin', 'Lift'),
 (14, 1, 'testlogin', 'Jumanji: The Next Level'),
 (15, 1, 'testlogin', 'Spider-Man: Across the Spider-Verse'),
@@ -252,7 +250,9 @@ INSERT INTO `watchlist` (`id`, `watchlist`, `wusername`, `wmovie`) VALUES
 (19, 1, 'testlogin', 'Spider-Man: No Way Home'),
 (20, 1, 'testlogin', 'Constantine'),
 (21, 1, 'testlogin', 'The Super Mario Bros. Movie'),
-(22, 1, 'testlogin', 'The Secret Life of Pets');
+(22, 1, 'testlogin', 'The Secret Life of Pets'),
+(25, 0, 'testlogin', 'Deadpool 2'),
+(29, 0, 'testlogin', 'The Beekeeper');
 
 --
 -- Indexes for dumped tables
@@ -332,7 +332,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `watchlist`
 --
 ALTER TABLE `watchlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
